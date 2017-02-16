@@ -1,9 +1,11 @@
-package me.frank.kotlindemo
+package me.frank.kotlindemo.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import me.frank.kotlindemo.R
+import me.frank.kotlindemo.adapter.ForecastListAdapter
 
 class ListActivity : AppCompatActivity() {
 
