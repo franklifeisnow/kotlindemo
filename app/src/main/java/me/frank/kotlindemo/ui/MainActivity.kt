@@ -1,9 +1,11 @@
 package me.frank.kotlindemo.ui
 
+import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.text.format.Formatter
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import me.frank.kotlindemo.R
@@ -12,13 +14,16 @@ import me.frank.kotlindemo.log.L
 
 class MainActivity : AppCompatActivity() {
 
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         L.init(this.javaClass)
 
-        message.text = "Hello Kotlin!"
+//        message.text = "Hello Kotlin!"
 
 //        message.setOnClickListener{
 //            startActivity(Intent(MainActivity@ this, ListActivity::class.java))
@@ -30,7 +35,27 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(MainActivity@ this, ListActivity::class.java))
         })
 
-        test()
+        val am = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+
+        val availMemStr: String  = getSystemAvailbeMemorySize(am)
+
+        message.text = "可用内存: "+ availMemStr;
+//        test()
+    }
+
+    // 获得系统可用内存信息
+    private fun  getSystemAvailbeMemorySize(am: ActivityManager): String {
+        val memoryInfo: ActivityManager.MemoryInfo = ActivityManager.MemoryInfo()
+        am.getMemoryInfo(memoryInfo)
+        val memSize: Long = memoryInfo.availMem
+
+        val availMemStr: String = formateFileSize(memSize)
+
+        return availMemStr
+    }
+    //调用系统函数，字符串转换 long -String KB/MB
+    private fun formateFileSize(size: Long): String{
+        return Formatter.formatFileSize(MainActivity@ this, size)
     }
 
     fun test() {
