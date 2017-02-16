@@ -6,6 +6,11 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import me.frank.kotlindemo.R
 import me.frank.kotlindemo.adapter.ForecastListAdapter
+import me.frank.kotlindemo.api.Request
+import org.jetbrains.anko.custom.async
+import org.jetbrains.anko.find
+import org.jetbrains.anko.longToast
+import org.jetbrains.anko.uiThread
 
 class ListActivity : AppCompatActivity() {
 
@@ -23,9 +28,15 @@ class ListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
 
-        val foracastList = findViewById(R.id.forecast_list) as RecyclerView
+//        val foracastList = findViewById(R.id.forecast_list) as RecyclerView
+        val foracastList: RecyclerView = find(R.id.forecast_list) // use anko
         foracastList.layoutManager = LinearLayoutManager(this)
         foracastList.adapter = ForecastListAdapter(items)
 
+        async() {
+            val url = "http://192.168.2.129:5638/hello"
+            Request(url).run()
+            uiThread { longToast("Request performed") }
+        }
     }
 }
