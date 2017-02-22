@@ -39,8 +39,22 @@ class MainActivity : AppCompatActivity() {
 
         val availMemStr: String  = getSystemAvailbeMemorySize(am)
 
-        message.text = "可用内存: "+ availMemStr;
+        message.text = "可用内存: "+ availMemStr
+
 //        test()
+
+        rxjavaTest()
+    }
+
+    private fun rxjavaTest() {
+//        Observable.just("one","two","three")
+//                .subscribeOn(Schedulers.newThread())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(/* an Observer */)
+
+
+
+
     }
 
     // 获得系统可用内存信息
