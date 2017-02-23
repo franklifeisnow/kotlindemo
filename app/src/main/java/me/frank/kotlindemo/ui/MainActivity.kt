@@ -41,9 +41,8 @@ class MainActivity : AppCompatActivity() {
 
         message.text = "可用内存: "+ availMemStr
 
-//        test()
-
-        rxjavaTest()
+        test()
+//        rxjavaTest()
     }
 
     private fun rxjavaTest() {
@@ -90,6 +89,14 @@ class MainActivity : AppCompatActivity() {
         L.d(name)
 
 //        toast("la la la ", Toast.LENGTH_LONG)
+
+
+
+        for (i in 1..9){
+            for (j in 1..9){
+                println("${i} x ${j} = "+i*j)
+            }
+        }
 
     }
 

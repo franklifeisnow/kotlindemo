@@ -42,10 +42,4 @@ class ForecastListAdapter(val items: List<Forecast>, val itemClick: (Forecast) -
 
     }
 
-
-//    public interface OnItemClickListener {
-//        operator fun invoke(forecast: Forecast)
-//    }
-
-
 }

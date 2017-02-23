@@ -15,8 +15,8 @@ class ListActivity : AppCompatActivity() {
 
 
     private val items = listOf(
-            Forecast("img001", "三星", "http://www.baidu.com", 1),
-            Forecast("img001", "三星", "http://www.baidu.com", 1),
+            Forecast("img001", "三星", "http://item.m.jd.com/product/1750523.html?sid=f20ecdb983c4e17235cbd3aaf25d034e", 1),
+            Forecast("img001", "三星", "", 1),
             Forecast("img001", "三星", "http://www.baidu.com", 1),
             Forecast("img001", "三星", "http://www.baidu.com", 1),
             Forecast("img001", "三星", "http://www.baidu.com", 1),
@@ -32,7 +32,7 @@ class ListActivity : AppCompatActivity() {
         foracastList.layoutManager = LinearLayoutManager(this)
         foracastList.layoutManager = GridLayoutManager(this, 3)
         foracastList.adapter = ForecastListAdapter(items) {
-            startActivity(Intent(ListActivity@ this, WebActivity::class.java))
+            startActivity(Intent(ListActivity@ this, WebActivity::class.java).putExtra("url",it.url))
         }
 
 //        async() {
