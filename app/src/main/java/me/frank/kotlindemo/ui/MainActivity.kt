@@ -32,7 +32,8 @@ class MainActivity : AppCompatActivity() {
 //            startActivity(Intent(MainActivity@ this, ListActivity::class.java))
 //        }
         message.setOnClickListener({
-            startActivity(Intent(MainActivity@ this, ListActivity::class.java))
+//            startActivity(Intent(MainActivity@ this, ListActivity::class.java))
+            startActivity(Intent(MainActivity@ this, JavaActivity::class.java))
         })
 
         val am = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
